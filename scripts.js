@@ -10,6 +10,20 @@ const baseFrequencies = {
 
 let frequencies = { ...baseFrequencies };
 
+const noteFrequencies = {
+    24: 'C1', 25: 'C#1', 26: 'D1', 27: 'D#1', 28: 'E1',
+    29: 'F1', 30: 'F#1', 31: 'G1', 32: 'G#1', 33: 'A1',
+    34: 'A#1', 35: 'B1', 36: 'C2', 37: 'C#2', 38: 'D2',
+    39: 'D#2', 40: 'E2', 41: 'F2', 42: 'F#2', 43: 'G2',
+    44: 'G#2', 45: 'A2', 46: 'A#2', 47: 'B2', 48: 'C3',
+    49: 'C#3', 50: 'D3', 51: 'D#3', 52: 'E3', 53: 'F3',
+    54: 'F#3', 55: 'G3', 56: 'G#3', 57: 'A3', 58: 'A#3',
+    59: 'B3', 60: 'C4', 61: 'C#4', 62: 'D4', 63: 'D#4',
+    64: 'E4', 65: 'F4', 66: 'F#4', 67: 'G4', 68: 'G#4',
+    69: 'A4', 70: 'A#4', 71: 'B4', 72: 'C5', 73: 'C#5',
+    74: 'D5', 75: 'D#5', 76: 'E5'
+};
+
 let keyBindings = {};
 const baseKeyBindings = {
     'a': 'C', 'w': 'C#', 's': 'D', 'e': 'D#', 'd': 'E',
@@ -252,15 +266,17 @@ function handleMIDIMessage(event) {
     const [command, note, velocity] = event.data;
 
     if (command === 144 && velocity > 0) { // Note on
-        startNoteFromKeyboard(noteFrequencies[note]);
-        highlightKey(noteFrequencies[note]);
-        console.log(`Note on: ${noteFrequencies[note]} (Velocity: ${velocity})`);
-        displayMessage(`Note on: ${noteFrequencies[note]} (Velocity: ${velocity})`);
+        const noteName = noteFrequencies[note];
+        startNoteFromKeyboard(noteName);
+        highlightKey(noteName);
+        console.log(`Note on: ${noteName} (Velocity: ${velocity})`);
+        displayMessage(`Note on: ${noteName} (Velocity: ${velocity})`);
     } else if (command === 128 || (command === 144 && velocity === 0)) { // Note off
-        stopNoteFromKeyboard(noteFrequencies[note]);
-        unhighlightKey(noteFrequencies[note]);
-        console.log(`Note off: ${noteFrequencies[note]}`);
-        displayMessage(`Note off: ${noteFrequencies[note]}`);
+        const noteName = noteFrequencies[note];
+        stopNoteFromKeyboard(noteName);
+        unhighlightKey(noteName);
+        console.log(`Note off: ${noteName}`);
+        displayMessage(`Note off: ${noteName}`);
     } else {
         console.log(`Unbekannter MIDI-Befehl: ${command}`);
         displayMessage(`Unbekannter MIDI-Befehl: ${command}`);
