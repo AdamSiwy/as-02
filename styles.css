@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.piano {
+    display: flex;
+    position: relative;
+}
+
+.key {
+    width: 40px;
+    height: 200px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.key.white {
+    background-color: #fff;
+}
+
+.key.black {
+    background-color: #000;
+    width: 30px;
+    height: 120px;
+    position: absolute;
+    z-index: 1;
+    margin-left: -15px;
+}
+
+.key[data-note="C#4"] {
+    left: 40px;
+}
+
+.key[data-note="D#4"] {
+    left: 80px;
+}
+
+.key[data-note="F#4"] {
+    left: 160px;
+}
+
+.key[data-note="G#4"] {
+    left: 200px;
+}
+
+.key[data-note="A#4"] {
+    left: 240px;
+}
+
+.key[data-note="C#5"] {
+    left: 320px;
+}
+
+.key[data-note="D#5"] {
+    left: 360px;
+}
+
+.key.highlight {
+    background-color: #ccc !important;
+}
+
+#messages {
+ position:absolute;
+ height: 50%;
+ overflow: hidden;
+ right:0px;
+}

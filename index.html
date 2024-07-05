@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual AS-01 Synthesizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="controls">
+        <button id="toggle-waveform">Toggle Waveform OSC1</button>
+        <span id="waveform-label">Current Waveform OSC1: sine</span>
+        <br />
+        <button id="toggle-osc2">OSC2 Aktivieren</button>
+        <br />
+        <button id="toggle-waveform-osc2" style="display:none;">Toggle Waveform OSC2</button>
+        <span id="waveform-label-osc2" style="display:none;">Current Waveform OSC2: sine</span>
+        <br />
+        <input type="range" id="detune-osc2" min="-50" max="50" value="0" style="display:none;">
+        <span id="detune-value" style="display:none;">Detune OSC2: 0 cents</span>
+        <br />
+        <input type="range" id="octave-shift" min="1" max="4" value="4">
+        <span id="octave-value">Oktave: C4</span>
+    </div>
+    <canvas id="oscilloscope" width="400" height="200"></canvas>
+    <div class="piano">
+        <div data-note="C4" class="key white"></div>
+        <div data-note="C#4" class="key black"></div>
+        <div data-note="D4" class="key white"></div>
+        <div data-note="D#4" class="key black"></div>
+        <div data-note="E4" class="key white"></div>
+        <div data-note="F4" class="key white"></div>
+        <div data-note="F#4" class="key black"></div>
+        <div data-note="G4" class="key white"></div>
+        <div data-note="G#4" class="key black"></div>
+        <div data-note="A4" class="key white"></div>
+        <div data-note="A#4" class="key black"></div>
+        <div data-note="B4" class="key white"></div>
+        <div data-note="C5" class="key white"></div>
+        <div data-note="C#5" class="key black"></div>
+        <div data-note="D5" class="key white"></div>
+        <div data-note="D#5" class="key black"></div>
+        <div data-note="E5" class="key white"></div>
+    </div>
+    
+    <div id="messages">MIDI-Nachrichten werden hier angezeigt...</div>
+    <script src="scripts.js"></script>
+</body>
+</html>
